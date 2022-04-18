@@ -18,11 +18,7 @@ struct CoinManager {
     func getCoinPrice(for currency: String) {
         
         let currencyURL = "\(baseURL)/\(currency)?apikey=\(apiKey)"
-        performRequest(currencyURL: currencyURL)
-        
-    }
     
-    func performRequest(currencyURL: String) {
         if let url = URL(string: currencyURL) {
             
             let session = URLSession(configuration: .default)
@@ -34,7 +30,8 @@ struct CoinManager {
                     return
                 }
                 if let safeData = data {
-                    print(String(data: safeData, encoding: .utf8))
+                    let dataString = (String(data: safeData, encoding: .utf8))
+                    print(dataString)
                     
                     //                    if let change = self.parseJSON(exchangeRate: safeData) {
                     //                        self.delegate?.didUpdateValue(self, exchangeRate: change)
